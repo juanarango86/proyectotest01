@@ -22,6 +22,7 @@
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     -->
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('sweetalert/sweetalert.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -717,6 +718,8 @@
                 </div>
             </div>
             <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+            <script src="{{asset('sweetalert/sweetalert.min.js')}}"></script>
+            @include('sweet::alert')
 </body>
 
 </html>

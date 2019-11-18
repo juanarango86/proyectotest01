@@ -33,3 +33,11 @@ Route::get('send-mail', function () {
    
     dd("Email is Sent.");
 });
+
+Route::get('redirect', function()
+{
+
+    alert()->success('Success Message', 'Optional Title');
+
+    return redirect('/home');
+});

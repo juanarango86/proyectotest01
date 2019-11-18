@@ -71,6 +71,8 @@
                                     </div>
                                    
                                     <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
+                                    <a href="redirect">hola</a>
+                                    @include ('sweet::alert')
                                 </form>
             
                                 <script>
