@@ -1,100 +1,157 @@
 @extends ('Layouts.layout')
 @section('contenido')
 
+<link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.js">
+</script>
+
 <div class="main-card mb-3 card">
-                            <div class="card-body">
-                                <h5 class="card-title">Registro</h5>
-                                
-                                <form class="needs-validation" novalidate>
-                                <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="position-relative form-group">
-                                                        <label for="validationCustom01" class="">Nombre Proyecto</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre Proyecto" value="" required>
-                                                        </div>
-                                                        <div class="valid-feedback">
-                                                        Correcto!
-                                                        </div>
-                                                        </div>
-                                                <div class="col-md-6">
-                                                    <div class="position-relative form-group"><label for="exampleSelect" class="">Cliente</label>
-                                                    <select name="select" id="exampleSelect" class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
-                                    
-                                    <div class="col-md-13 mb-4">
-                                            <label for="validationCustom02">Descripción</label>
-                                            <textarea name="text" id="exampleText" class="form-control" id="validationCustom02" placeholder="Descripcion / Resumen del proyecto" value="Otto" required></textarea>
-                                            <div class="valid-feedback">
-                                                Correcto!
-                                            </div>
-                                        </div>
-                                     <div class="form-row">
-                                        <div class="col-md-2 mb-3">
-                                            <label for="validationCustom03">Cantidad de Encuestas</label>
-                                            <input type="number" class="form-control" id="validationCustom03" placeholder="Cantidad" required>
-                                            <div class="invalid-feedback">
-                                                Please provide a valid city.
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                                    <div class="position-relative form-group"><label for="exampleSelect" class="">Tipo Poblacion</label>
-                                                    <select name="select" id="exampleSelect" class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="position-relative form-group"><label for="exampleSelect" class="">Estado</label>
-                                                    <select name="select" id="exampleSelect" class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                    </div>
-                                   
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
-                                    <a href="redirect">hola</a>
-                                    @include ('sweet::alert')
-                                </form>
-            
-                                <script>
-                                    // Example starter JavaScript for disabling form submissions if there are invalid fields
-                                    (function() {
-                                        'use strict';
-                                        window.addEventListener('load', function() {
-                                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                            var forms = document.getElementsByClassName('needs-validation');
-                                            // Loop over them and prevent submission
-                                            var validation = Array.prototype.filter.call(forms, function(form) {
-                                                form.addEventListener('submit', function(event) {
-                                                    if (form.checkValidity() === false) {
-                                                        event.preventDefault();
-                                                        event.stopPropagation();
-                                                    }
-                                                    form.classList.add('was-validated');
-                                                }, false);
-                                            });
-                                        }, false);
-                                    })();
-                                </script>
-                            </div>
-                        </div>
+    <div class="card-body">
+        <h5 class="card-title">Registro</h5>
+
+        <form class="needs-validation" novalidate>
+            <div class="form-row">
+
+            </div>
+
+
+    </div>
+
+    <div class="container">
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Nuevo</button>
+        <table id="tblclientes" name="tblclientes" class="table table-striped" style="width:100%">
+            <br>
+            <br>
+
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Decripcion</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Opciones
+
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+
+                    <td>
+                        <a href="#">
+                            <button class="btn btn-info">Editar</button></a>
+
+                        <a href="#" data-target="#" data-toggle="modal">
+                            <button class="btn btn-danger">Eliminar</button></a>
+                    </td>
+
+
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+
+                    <td>
+                        <a href="#">
+                            <button class="btn btn-info">Editar</button></a>
+
+                        <a href="#" data-target="#" data-toggle="modal">
+                            <button class="btn btn-danger">Eliminar</button></a>
+                    </td>
+
+
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+
+                    <td>
+                        <a href="#">
+                            <button class="btn btn-info">Editar</button></a>
+
+                        <a href="#" data-target="#" data-toggle="modal">
+                            <button class="btn btn-danger">Eliminar</button></a>
+                    </td>
+
+
+                    </th>
+                </tr>
+    </div>
+    </tbody>
+    <script>
+    $(document).ready(function() {
+        $('#tblclientes').DataTable({
+            "language": {
+                "lengthMenu": "_MENU_ Registros por pagina",
+                "zeroRecords": "Sin Resultados - sorry",
+                "search": "Buscar:",
+                "info": "Listado _PAGE_ de _PAGES_ Paginas",
+                "infoEmpty": "Sin Resultados",
+                "infoFiltered": "(Busqueda de un total _MAX_ registros)",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    });
+    </script>
+
+    </table>
+
+
+    <a href="redirect">hola</a>
+
+    @include ('sweet::alert')
+    </form>
+
+    <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+    </script>
+</div>
+</div>
 @stop
-
-
