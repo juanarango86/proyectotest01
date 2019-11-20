@@ -552,13 +552,13 @@
                            
                             <li class="app-sidebar__heading">Proyectos</li>
                             <li>
-                                <a href="forms-controls.html">
+                                <a href="{{asset('Proyecto')}}">
                                     <i class="metismenu-icon pe-7s-graph">
                                     </i>Proyectos
                                 </a>
                             </li>
                             <li>
-                                <a href="forms-layouts.html">
+                            <a href="{{asset('Cliente')}}">
                                     <i class="metismenu-icon pe-7s-portfolio">
                                     </i>Clientes
                                 </a>

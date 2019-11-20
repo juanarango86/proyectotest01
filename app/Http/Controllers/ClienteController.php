@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PruebaController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class PruebaController extends Controller
      */
     public function index()
     {
-        return view("Proyecto.index");
+        return view("Cliente.index");
     }
 
     /**
@@ -82,3 +83,4 @@ class PruebaController extends Controller
         //
     }
 }
+

@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 
-Route::resource('Proyecto','PruebaController');
+Route::resource('Proyecto','ProyectoController');
+
+Route::resource('Cliente','ClienteController');
 
 Auth::routes();
 
