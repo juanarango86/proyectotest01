@@ -2164,6 +2164,10 @@ pre code {
     border: 0
 }
 
+.dt-center, 
+
+.dt-center { text-align: center; }
+
 .form-control {
     display: block;
     width: 100%;

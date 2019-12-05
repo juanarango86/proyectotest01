@@ -2,72 +2,145 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-
 use App\Cliente;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+/* use App\Http\Controllers\Controller; */
 use App\Http\Requests\ClienteFormRequest;
-use DB;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class ClienteController extends Controller
 {
-    
-//Definir el Constructor
-    public function __construct()
-    {
-        
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
-     
-            
-        return view("Cliente.index");
+        //
+        $clientes=Cliente::orderBy('Id_Cliente','DESC')->paginate();
+        return view('Cliente.index',compact('clientes'));
     }
 
-       
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view("Cliente.create");
-      /*  echo "test"; */
+        //
+        return view('Cliente.create',['cliente'=>new Cliente()]);
     }
 
-    public function store (ClienteFormRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function store(ClienteFormRequest $request)
     {
-        $cliente = new Cliente;
-        $cliente ->id=$request->get('Id_Cliente');
-        $cliente ->nombre=$request->get('Nombre');
-        $cliente->descripcion=$request->get ('Descripcion');
-        $cliente->telefono=$request->get ('Telefono');
-        $cliente->celular=$request->get ('Celular');
-        $cliente->direccion=$request->get ('Direccion');
-        $cliente->email=$request->get ('Correo_Electronico');
+
+        $cliente= new Cliente();
+       /*  $cliente->cedula=$request->input('cedula'); */
+        $cliente->Nombre=$request->input('nombre');
+        $cliente->Descripcion=$request->input('descripcion');   
+        $cliente->Telefono=$request->input('telefono');   
+        $cliente->Celular=$request->input('celular');   
+        $cliente->Direccion=$request->input('direccion');
+        $cliente->Correo_Electronico=$request->input('correo');  
         $cliente->save();
-        return Redirect::to('Cliente');
-    }
+
+     /*  echo $request ->input('cedula'). $request->input('nombre').$request->input('descripcion').$request->input('telefono'). $request->input('celular').$request->input('direccion').$request->input('correo');
+ */
+      /*   var_dump($request); */
+
+        return redirect()->route('Cliente.index')->with('success','Registro creado satisfactoriamente');
+    }      
+
+
+        //
+       /*  $this->validate($request,['Nombre'=>'required', 'Descripcion'=>'required', 'telefono'=>'required', 
+        'celular'=>'required', 'direccion'=>'required', 'correo'=>'required']);
+        Cliente::create($request->all());
+        return redirect()->route('Cliente.index')->with('success','Registro creado satisfactoriamente');
+    */ 
+ 
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+        $clientes=Cliente::find($id);
+        return view('Cliente.index',compact('clientes'));
     
-     
-    public function edit($id)
-    {
-        return view ("Cliente.show",["cliente"=>Cliente::findOrFail($id)]);
     }
 
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($Id_Cliente)
     {
         //
+        $cliente=Cliente::where('Id_Cliente',$Id_Cliente)->first();
+        return view('Cliente.edit',compact('cliente'));
     }
 
-    public function show ($id)
-{
-    //return view ("Cliente.show");
-}
-}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ClienteFormRequest $request, $Id_Cliente)
+    {
+        //
+       /*  $this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'telefono'=>'required', 'celular'=>'required', 'correo'=>'required']);
+  */
 
+       /*  Cliente::find($id)->update($request->all());
+        return redirect()->route('Cliente.index')->with('success','Registro actualizado satisfactoriamente');
+  */
+        $cliente=Cliente::where('Id_Cliente', $Id_Cliente)->update([
+
+
+        'Nombre'=>$request->nombre,
+        'Descripcion'=>$request->descripcion,
+        'Telefono'=>$request->telefono,
+        'Celular'=>$request->celular,
+        'Direccion'=>$request->direccion,
+        'Correo_Electronico'=>$request->correo,
+        
+        ]);
+
+        return redirect()->route('clienteslistado');
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function destroy(Cliente $cliente, $Id_Cliente)
+    {
+        //
+        $cliente=Cliente::where('Id_Cliente',$Id_Cliente)->delete();
+        return redirect()->route('clienteslistado');
+        /* return redirect()->route('Cliente.index')->with('success','Registro eliminado satisfactoriamente');
+     */
+    }
+}

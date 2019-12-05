@@ -25,6 +25,13 @@ class ClienteFormRequest extends FormRequest
     {
         return [
             //
+            'nombre'=>'required',
+            'descripcion'=>'required',
+            'telefono'=>'required',
+            'celular'=>'required',
+            'direccion'=>'required',
+            'correo'=>'required',
+            
         ];
     }
 }

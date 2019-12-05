@@ -15,10 +15,19 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::post('/clientes',['as'=>'clientesstore','uses'=>'ClienteController@store']);
 
 Route::resource('Proyecto','ProyectoController');
 
 Route::resource('Cliente','ClienteController');
+
+Route::get('Clientes/{Id_Cliente}/edit',['as'=>'clienteedit', 'uses'=>'ClienteController@edit']);
+
+Route::put('Clientes/{Id_Cliente}',['as'=>'clienteupdate', 'uses'=>'ClienteController@update']);
+
+Route::get('Clientes/listado',['as'=>'clienteslistado', 'uses'=>'ClienteController@index']);
+
+Route::delete('Clientes/{Id_Cliente}',['as'=>'clientedelete', 'uses'=>'ClienteController@destroy']);
 
 Auth::routes();
 

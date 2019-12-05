@@ -10,7 +10,7 @@
                                                 <div class="col-md-6">
                                                     <div class="position-relative form-group">
                                                         <label for="validationCustom01" class="">Nombre Proyecto</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre Proyecto" value="" required>
+                                                        <input type="text" class="form-control form-rounded" id="validationCustom01" placeholder="Nombre Proyecto" value="" required>
                                                         </div>
                                                         <div class="valid-feedback">
                                                         Correcto!
