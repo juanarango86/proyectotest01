@@ -22,6 +22,10 @@ class CrearTablaProyectos extends Migration
             $table->integer('Cantidad_De_Encuestas');
             $table->integer('Id_Tipo_De_Poblacion');
             $table->boolean('Estado');
+<<<<<<< qryeison
+            $table->nullableTimestamps();
+=======
+>>>>>>> master
         });
     }
 

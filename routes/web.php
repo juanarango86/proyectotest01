@@ -17,6 +17,10 @@ Route::get('/', function () {
 //proyectos
 Route::resource('Proyecto','ProyectoController');
 
+<<<<<<< qryeison
+  
+Route::resource('Proyecto','ProyectoController');
+=======
 Route::post('/proyectos',['as'=>'proyectosstore','uses'=>'ProyectoController@store']);
 
 Route::get('Proyectos/{Id_Proyecto}/edit',['as'=>'proyectoedit', 'uses'=>'ProyectoController@edit']);
@@ -29,6 +33,9 @@ Route::delete('Proyectos/{Id_Proyecto}',['as'=>'proyectodelete', 'uses'=>'Proyec
 
 
 //clientes
+>>>>>>> master
+
+Route::post('/clientes',['as'=>'clientesstore','uses'=>'ClienteController@store']);
 
 Route::resource('Cliente','ClienteController');
 
@@ -43,6 +50,24 @@ Route::get('Clientes/listado',['as'=>'clienteslistado', 'uses'=>'ClienteControll
 Route::delete('Clientes/{Id_Cliente}',['as'=>'clientedelete', 'uses'=>'ClienteController@destroy']);
 
 
+<<<<<<< qryeison
+
+Route::post('/tipo_de_poblacion',['as'=>'tipo_de_poblacionsstore','uses'=>'Tipo_de_poblacionController@store']);
+
+Route::resource('Tipo_de_poblacion','Tipo_de_poblacionController');
+
+Route::get('Tipo_de_poblacion/{Id_Tipo_De_Poblacion}/edit',['as'=>'tipo_de_poblacionedit', 'uses'=>'Tipo_de_poblacionController@edit']);
+
+Route::put('Tipo_de_poblacion/{Id_Tipo_De_Poblacion}',['as'=>'tipo_de_poblacionupdate', 'uses'=>'Tipo_de_poblacionController@update']);
+
+Route::get('Tipo_de_poblacion/listado',['as'=>'tipo_de_poblacionslistado', 'uses'=>'Tipo_de_poblacionController@index']);
+
+Route::delete('Tipo_de_poblacion/{Id_Tipo_De_Poblacion}',['as'=>'tipo_de_poblaciondelete', 'uses'=>'Tipo_de_poblacionController@destroy']);
+
+=======
+  
+  
+>>>>>>> master
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
