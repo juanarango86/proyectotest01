@@ -1,98 +1,140 @@
-@extends ('Layouts.layout')
+@extends('Layouts.layout')
 @section('contenido')
 
 <div class="main-card mb-3 card">
-                            <div class="card-body">
-                                <h5 class="card-title">Registro</h5>
-                                
-                                <form class="needs-validation" novalidate>
-                                <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="position-relative form-group">
-                                                        <label for="validationCustom01" class="">Nombre Proyecto</label>
-                                                        <input type="text" class="form-control form-rounded" id="validationCustom01" placeholder="Nombre Proyecto" value="" required>
-                                                        </div>
-                                                        <div class="valid-feedback">
-                                                        Correcto!
-                                                        </div>
-                                                        </div>
-                                                <div class="col-md-6">
-                                                    <div class="position-relative form-group"><label for="exampleSelect" class="">Cliente</label>
-                                                    <select name="select" id="exampleSelect" class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
-                                    
-                                    <div class="col-md-13 mb-4">
-                                            <label for="validationCustom02">Descripción</label>
-                                            <textarea name="text" id="exampleText" class="form-control" id="validationCustom02" placeholder="Descripcion / Resumen del proyecto" value="Otto" required></textarea>
-                                            <div class="valid-feedback">
-                                                Correcto!
-                                            </div>
+    <div class="card-body">
+        <!-- @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Revise los campos obligatorios.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+					@endforeach
+					
+                </ul>
+            </div>
+            @endif -->
+
+
+        @if(Session::has('success'))
+        <div class="alert alert-info">
+            {{Session::get('success')}}
+        </div>
+        @endif
+
+        <div class="card-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Nuevo Proyecto</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-container">
+                        <form   method="POST" action="{{route('proyectosstore')}}">
+                        
+                            @csrf
+                           
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group form-rounde">
+                                        <input type="text" name="nombre" class="form-control form-rounded" id="validationCustom03"
+                                            placeholder="Nombre" required placeholder="Nombre"
+                                            value="{{old('nombre')}}">
+                                        <div class="invalid-feedback">
+                                            Debe ingresar el nombre completo del ciente o el nombre de la empresa
                                         </div>
-                                     <div class="form-row">
-                                        <div class="col-md-2 mb-3">
-                                            <label for="validationCustom03">Cantidad de Encuestas</label>
-                                            <input type="number" class="form-control" id="validationCustom03" placeholder="Cantidad" required>
-                                            <div class="invalid-feedback">
-                                                Please provide a valid city.
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                                    <div class="position-relative form-group"><label for="exampleSelect" class="">Tipo Poblacion</label>
-                                                    <select name="select" id="exampleSelect" class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="position-relative form-group"><label for="exampleSelect" class="">Estado</label>
-                                                    <select name="select" id="exampleSelect" class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                </div>
-                                                </div>
+                                        <!--  {!! $errors->first('nombre','<span style=color:blue;">:message</span>')!!} -->
+
                                     </div>
-                                   
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
-                                    <a href="redirect">hola</a>
-                                    @include ('sweet::alert')
-                                </form>
-            
-                                <script>
-                                    // Example starter JavaScript for disabling form submissions if there are invalid fields
-                                    (function() {
-                                        'use strict';
-                                        window.addEventListener('load', function() {
-                                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                            var forms = document.getElementsByClassName('needs-validation');
-                                            // Loop over them and prevent submission
-                                            var validation = Array.prototype.filter.call(forms, function(form) {
-                                                form.addEventListener('submit', function(event) {
-                                                    if (form.checkValidity() === false) {
-                                                        event.preventDefault();
-                                                        event.stopPropagation();
-                                                    }
-                                                    form.classList.add('was-validated');
-                                                }, false);
-                                            });
-                                        }, false);
-                                    })();
-                                </script>
+
+                                </div>
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="descripcion" class="form-control" id="validationCustom03"
+                                            placeholder="descripcion" required value="{{old('descripcion')}}">
+                                        <div class="invalid-feedback">
+                                            Debe ingresar el numero de telefono del cliente
+                                        </div>
+                                        <!-- {!! $errors->first('descripcion','<span style=color:blue;">:message</span>')!!} -->
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="id_cliente" class="form-control" id="validationCustom03"
+                                            placeholder="id_cliente" required value="{{old('id_cliente')}}">
+                                        <div class="invalid-feedback">
+                                            Debe ingresar el numero de celular del cliente
+                                        </div>
+                                        <!-- {!! $errors->first('id_cliente','<span style=color:blue;">:message</span>')!!} -->
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="cantidad_encuestas" class="form-control" id="validationCustom03"
+                                            placeholder="cantidad_encuestas" required value="{{old('cantidad_encuestas')}}">
+                                        <div class="invalid-feedback">
+                                            Debe ingresar la direccion del cliente
+                                        </div>
+                                        <!-- {!! $errors->first('cantidad_encuestas','<span style=color:blue;">:message</span>')
+                                        !!} -->
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" name="poblacion" class="form-control" id="validationCustom03"
+                                            placeholder="poblacion" required value="{{old('poblacion')}}">
+                                        <div class="invalid-feedback">
+                                            Debe ingresar una cuenta de correo electronico valida
+                                        </div>
+                                        <!-- {!! $errors->first('poblacion','<span style=color:blue;">:message</span>')
+                                        !!} -->
+                                    </div>
+                                </div>
+                                
                             </div>
-                        </div>
-@stop
+                            <br>
+
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <input type="submit" value="Guardar" class="mb-2 mr-2 btn-transition btn btn-outline-primary btn-block"">
+                                    <a href="{{ route('Proyecto.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-info btn-block">Atrás</a>
+                                </div>
+
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+@endsection
+
+{{-- <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+</script> --}}
+</div>
+</div>

@@ -57,7 +57,7 @@ class ClienteController extends Controller
  */
       /*   var_dump($request); */
 
-        return redirect()->route('Cliente.index')->with('success','Registro creado satisfactoriamente');
+        return redirect()->route('clienteslistado')->with('success','Registro creado satisfactoriamente');
     }      
 
 

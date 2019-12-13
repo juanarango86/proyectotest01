@@ -14,12 +14,32 @@
 Route::get('/', function () {
     return view('auth.login');
 });
-
+//proyectos
 Route::resource('Proyecto','ProyectoController');
+
+<<<<<<< qryeison
+  
+Route::resource('Proyecto','ProyectoController');
+=======
+Route::post('/proyectos',['as'=>'proyectosstore','uses'=>'ProyectoController@store']);
+
+Route::get('Proyectos/{Id_Proyecto}/edit',['as'=>'proyectoedit', 'uses'=>'ProyectoController@edit']);
+
+Route::put('Proyectos/{Id_Proyecto}',['as'=>'proyectoupdate', 'uses'=>'ProyectoController@update']);
+
+Route::get('Proyectos/listado',['as'=>'proyectoslistado', 'uses'=>'ProyectoController@index']);
+
+Route::delete('Proyectos/{Id_Proyecto}',['as'=>'proyectodelete', 'uses'=>'ProyectoController@destroy']);
+
+
+//clientes
+>>>>>>> master
 
 Route::post('/clientes',['as'=>'clientesstore','uses'=>'ClienteController@store']);
 
 Route::resource('Cliente','ClienteController');
+
+Route::post('/clientes',['as'=>'clientesstore','uses'=>'ClienteController@store']);
 
 Route::get('Clientes/{Id_Cliente}/edit',['as'=>'clienteedit', 'uses'=>'ClienteController@edit']);
 
@@ -30,6 +50,7 @@ Route::get('Clientes/listado',['as'=>'clienteslistado', 'uses'=>'ClienteControll
 Route::delete('Clientes/{Id_Cliente}',['as'=>'clientedelete', 'uses'=>'ClienteController@destroy']);
 
 
+<<<<<<< qryeison
 
 Route::post('/tipo_de_poblacion',['as'=>'tipo_de_poblacionsstore','uses'=>'Tipo_de_poblacionController@store']);
 
@@ -43,21 +64,14 @@ Route::get('Tipo_de_poblacion/listado',['as'=>'tipo_de_poblacionslistado', 'uses
 
 Route::delete('Tipo_de_poblacion/{Id_Tipo_De_Poblacion}',['as'=>'tipo_de_poblaciondelete', 'uses'=>'Tipo_de_poblacionController@destroy']);
 
+=======
+  
+  
+>>>>>>> master
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('send-mail', function () {
-   
-    $details = [
-        'title' => 'Mail from ItSolutionStuff.com',
-        'body' => 'This is for testing email using smtp'
-    ];
-   
-    \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\SendMail($details));
-   
-    dd("Email is Sent.");
-});
 
 Route::get('redirect', function()
 {

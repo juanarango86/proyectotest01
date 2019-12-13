@@ -23,7 +23,10 @@ class CrearTablaUsuarios extends Migration
             $table->string('Direccion', 100);
             $table->string('Telefono', 100);
             $table->string('Celular', 100);
-            $table->nullableTimestamps();
+<<<<<<< qryeison
+       
+=======
+>>>>>>> master
         });
     }
 
