@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::post('/clientes',['as'=>'clientesstore','uses'=>'ClienteController@store']);
-
 Route::resource('Proyecto','ProyectoController');
+
+Route::post('/clientes',['as'=>'clientesstore','uses'=>'ClienteController@store']);
 
 Route::resource('Cliente','ClienteController');
 
@@ -28,6 +28,20 @@ Route::put('Clientes/{Id_Cliente}',['as'=>'clienteupdate', 'uses'=>'ClienteContr
 Route::get('Clientes/listado',['as'=>'clienteslistado', 'uses'=>'ClienteController@index']);
 
 Route::delete('Clientes/{Id_Cliente}',['as'=>'clientedelete', 'uses'=>'ClienteController@destroy']);
+
+
+
+Route::post('/tipo_de_poblacion',['as'=>'tipo_de_poblacionsstore','uses'=>'Tipo_de_poblacionController@store']);
+
+Route::resource('Tipo_de_poblacion','Tipo_de_poblacionController');
+
+Route::get('Tipo_de_poblacion/{Id_Tipo_De_Poblacion}/edit',['as'=>'tipo_de_poblacionedit', 'uses'=>'Tipo_de_poblacionController@edit']);
+
+Route::put('Tipo_de_poblacion/{Id_Tipo_De_Poblacion}',['as'=>'tipo_de_poblacionupdate', 'uses'=>'Tipo_de_poblacionController@update']);
+
+Route::get('Tipo_de_poblacion/listado',['as'=>'tipo_de_poblacionslistado', 'uses'=>'Tipo_de_poblacionController@index']);
+
+Route::delete('Tipo_de_poblacion/{Id_Tipo_De_Poblacion}',['as'=>'tipo_de_poblaciondelete', 'uses'=>'Tipo_de_poblacionController@destroy']);
 
 Auth::routes();
 

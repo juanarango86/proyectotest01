@@ -564,7 +564,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="forms-validation.html">
+                                <a href="{{asset('Tipo_de_poblacion')}}">
                                     <i class="metismenu-icon pe-7s-map">
                                     </i>Tipos de Poblaciones
                                 </a>
