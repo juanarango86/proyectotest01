@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Proyecto;
+use App\Tipo_de_poblacion;
 use Illuminate\Http\Request;
 /* use App\Http\Controllers\Controller; */
-use App\Http\Requests\ProyectoFormRequest;
+use App\Http\Requests\Tipo_de_poblacionFormRequest;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
-class ProyectoController extends Controller
+class Tipo_de_poblacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class ProyectoController extends Controller
     public function index(Request $request)
     {
         //
-        $proyectos=Proyecto::orderBy('Id_Proyecto','DESC')->paginate();
-        return view('Proyecto.index',compact('proyectos'));
+        $tipo_de_poblacions=Tipo_de_poblacion::orderBy('Id_Tipo_De_Poblacion','DESC')->paginate();
+        return view('Tipo_de_poblacion.index',compact('tipo_de_poblacions'));
     }
 
     /**
@@ -30,7 +30,7 @@ class ProyectoController extends Controller
     public function create()
     {
         //
-        return view('Proyecto.create',['proyecto'=>new Proyecto()]);
+        return view('Tipo_de_poblacion.create',['tipo_de_poblacion'=>new Tipo_de_poblacion()]);
     }
 
     /**
@@ -40,25 +40,21 @@ class ProyectoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(ProyectoFormRequest $request)
+    public function store(Tipo_de_poblacionFormRequest $request)
     {
 
-        $proyecto= new Proyecto();
-        /* $cliente->cedula=$request->input('cedula');  */
-        $proyecto->Nombre=$request->input('nombre_proyecto');
-        $proyecto->Descripcion=$request->input('descripcion');   
-        $proyecto->Id_Cliente=$request->input('id_cliente');   
-        $proyecto->Cantidad_De_Encuestas=$request->input('cantidad_de_encuestas');   
-        $proyecto->Id_Tipo_De_Poblacion=$request->input('id_tipo_poblacion'); 
-        $proyecto->save();
+        $tipo_de_poblacion= new Tipo_de_poblacion();
+        $tipo_de_poblacion->Nombre_De_Poblacion=$request->input('nombre_De_Poblacion');
+        $tipo_de_poblacion->Edad_Minima=$request->input('edad_Minima');   
+        $tipo_de_poblacion->Edad_Maxima=$request->input('edad_Maxima');   
+        $tipo_de_poblacion->Estrato_Social=$request->input('estrato_Social');     
+        $tipo_de_poblacion->save();
 
      /*  echo $request ->input('cedula'). $request->input('nombre').$request->input('descripcion').$request->input('telefono'). $request->input('celular').$request->input('direccion').$request->input('correo');
  */
       /*   var_dump($request); */
 
-        return redirect()->route('proyectoslistado')->with('success','Registro creado satisfactoriamente');
-   
-/*    return view("Proyecto.index"); */
+        return redirect()->route('Tipo_de_poblacion.index')->with('success','Registro creado satisfactoriamente');
     }      
 
 
@@ -79,8 +75,8 @@ class ProyectoController extends Controller
     public function show($id)
     {
         //
-        $proyecto=Proyecto::find($id);
-        return view('Proyecto.index',compact('proyectos'));
+        $tipo_de_poblacions=Tipo_de_poblacion::find($id);
+        return view('Tipo_de_poblacion.index',compact('tipo_de_poblacions'));
     
     }
 
@@ -90,11 +86,11 @@ class ProyectoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($Id_Proyecto)
+    public function edit($Id_Tipo_De_Poblacion)
     {
         //
-        $proyecto=Proyecto::where('Id_Proyecto',$Id_Proyecto)->first();
-        return view('Proyecto.edit',compact('proyecto'));
+        $tipo_de_poblacion=Tipo_de_poblacion::where('Id_Tipo_De_Poblacion',$Id_Tipo_De_Poblacion)->first();
+        return view('Tipo_de_poblacion.edit',compact('tipo_de_poblacion'));
     }
 
     /**
@@ -104,7 +100,7 @@ class ProyectoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProyectoFormRequest $request, $Id_Proyecto)
+    public function update(Tipo_de_poblacionFormRequest $request, $Id_Tipo_De_Poblacion)
     {
         //
        /*  $this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'telefono'=>'required', 'celular'=>'required', 'correo'=>'required']);
@@ -113,19 +109,17 @@ class ProyectoController extends Controller
        /*  Cliente::find($id)->update($request->all());
         return redirect()->route('Cliente.index')->with('success','Registro actualizado satisfactoriamente');
   */
-        $proyecto=Proyecto::where('Id_Proyecto', $Id_Proyecto)->update([
+        $tipo_de_poblacion=Tipo_de_poblacion::where('Id_Tipo_De_Poblacion', $Id_Tipo_De_Poblacion)->update([
 
 
-        'Nombre_Proyecto'=>$request->nombre,
-        'Descripcion'=>$request->descripcion,
-        'Id_Cliente'=>$request->id_cliente,
-        'Cantidad_De_Encuestas'=>$request->cantidad_encuestas,
-        'Id_Tipo_De_Poblacion'=>$request->tipo_poblacion,
-        
+        'Nombre_De_Poblacion'=>$request->nombre_De_Poblacion,
+        'Edad_Minima'=>$request->edad_Minima,
+        'Edad_Maxima'=>$request->edad_Maxima,
+        'Estrato_Social'=>$request->estrato_Social,
         
         ]);
 
-        return redirect()->route('proyectoslistado');
+        return redirect()->route('tipo_de_poblacionslistado');
 
     }
 
@@ -136,11 +130,11 @@ class ProyectoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy(Proyecto $proyecto, $Id_Proyecto)
+    public function destroy(Tipo_de_poblacion $tipo_de_poblacion, $Id_Tipo_De_Poblacion)
     {
         //
-        $proyecto=Proyecto::where('Id_Proyecto',$Id_Proyecto)->delete();
-        return redirect()->route('proyectoslistado');
+        $tipo_de_poblacion=Tipo_de_poblacion::where('Id_Tipo_De_Poblacion',$Id_Tipo_De_Poblacion)->delete();
+        return redirect()->route('tipo_de_poblacionslistado');
         /* return redirect()->route('Cliente.index')->with('success','Registro eliminado satisfactoriamente');
      */
     }

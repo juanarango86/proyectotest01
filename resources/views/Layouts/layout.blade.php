@@ -564,16 +564,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="forms-validation.html">
+                                <a href="{{asset('Tipo_de_poblacion')}}">
                                     <i class="metismenu-icon pe-7s-map">
                                     </i>Tipos de Poblaciones
                                 </a>
                             </li>
-                            <li class="app-sidebar__heading">Encuestas</li>
-                            <li>
-                                <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon pe-7s-note2"></i>
-                                    Encuestas
+							<li>
+                                <a href="{{asset('Encuesta')}}">
+                                    <i class="metismenu-icon pe-7s-note2">
+                                    </i>Encuestas
                                 </a>
                             </li>
                             <li>
@@ -582,11 +581,12 @@
                                     Asignacion Encuestas
                                 </a>
                             </li>
+							
                             <li class="app-sidebar__heading">Formularios</li>
-                            <li>
-                                <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon pe-7s-menu"></i>
-                                    Formularios
+							<li>
+                                <a href="{{asset('Formulario')}}">
+                                    <i class="metismenu-icon pe-7s-menu">
+                                    </i>Formularios
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">Gestion de preguntas</li>

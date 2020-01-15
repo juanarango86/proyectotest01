@@ -9,30 +9,51 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="pull-left">
-                    <h3>Lista Proyectos</h3>
+                    <h3>Lista  de Encuestas</h3>
                 </div>
 
 
-                <a href="{{ route('Proyecto.create') }}" class="btn btn-outline-primary btn-block">Añadir Proyecto</a>
+                <a href="{{ route('Encuesta.create') }}" class="btn btn-outline-primary btn-block">Añadir Encuestas</a>
 
             </div>
             <br>
             
             <div class="table-responsive">
-                <table id="tblproyectos" class="mb-0 table table-bordered table-hover table-sm table-responsive" style="width:100%" cellspacing="0">
+                <table id="tblencuestas" class="mb-0 table table-bordered table-hover table-sm table-responsive" style="width:100%" cellspacing="0">
                     <thead>
                         <!--  <th scope="col">Id</th> -->
-                        <th scope="col">Nombre Proyecto</th>
-                        <th scope="col">Decripcion</th>
-                        <th scope="col">Cliente</th>
-                        <th scope="col"># Encuestas</th>
-                       {{--  <th scope="col">Direccion</th> --}}
-                        <th scope="col">Tipo Poblacion</th>
+                        <th scope="col">Id_Proyecto</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Id_Formulario</th>
                         <th scope="col">Editar
                         <th scope="col">Eliminar
                     </thead>
                     <tbody>
-                        
+                        @if($encuestas->count())
+                        @foreach($encuestas as $encuesta)
+                        <tr>
+                            
+                            <td>{{$encuesta->Id_Proyecto}}</td>
+                            <td>{{$encuesta->Estado}}</td>
+                            <td>{{$encuesta->Id_Formulario}}</td>
+                            <td>
+                                <a href="{{ route('encuestaedit', $encuesta->Id_Encuesta) }}" type="submit"
+                                    class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-success">Editar</a>
+                            </td>
+                            <td>
+                                <form method="POST" action="{{route('encuestadelete',$encuesta->Id_Encuesta)}}">
+                                    {!!method_field('DELETE')!!}
+                                    @csrf
+                                    <button type="submit" class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                        @else
+                        <tr>
+                            <td colspan="8">No hay registro !!</td>
+                        </tr>
+                        @endif
                     </tbody>
 
                 </table>
@@ -40,12 +61,12 @@
         </div>
     </div>
 </div>
-
+{{ $encuestas->links() }}
 
 </section>
 <script>
     $(document).ready(function () {
-        $('#tblproyectos').DataTable({
+        $('#tblencuestas').DataTable({
             'columnDefs': [
   {
       "targets": 0,// your case first column
@@ -71,8 +92,6 @@
       "width": "0%"
  },
 
-
-
 ],
             "language": {
                 "lengthMenu": "_MENU_ Registros por pagina",
@@ -92,6 +111,5 @@
     });
 
 </script>
-
 
 @endsection
