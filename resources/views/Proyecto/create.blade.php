@@ -29,7 +29,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-container">
-                        <form   method="POST" action="{{route('proyectosstore')}}">
+                        <form class="needs-validation" novalidate method="POST" action="{{route('proyectosstore')}}">
                         
                             @csrf
                            
@@ -96,12 +96,16 @@
 
                             <div class="row">
 
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <input type="submit" value="Guardar" class="mb-2 mr-2 btn-transition btn btn-outline-primary btn-block">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <input type="submit" value="Guardar" class="mb-2 mr-2 btn-transition btn btn-outline-primary btn-block"">
                                     <a href="{{ route('Proyecto.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-info btn-block">Atrás</a>
                                 </div>
-
                             </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <input type="submit" value="Guardar" class="mb-2 mr-2 btn-transition btn btn-outline-primary btn-block"">
+                                    <a href="{{ route('Proyecto.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-info btn-block">Atrás</a>
+                                </div>
                            
                         </form>
                     </div>
@@ -115,7 +119,7 @@
 </section>
 @endsection
 
-{{-- <script>
+ <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict';
@@ -135,6 +139,6 @@
         }, false);
     })();
 
-</script> --}}
+</script>
 </div>
 </div>

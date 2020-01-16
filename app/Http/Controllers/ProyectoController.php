@@ -45,7 +45,7 @@ class ProyectoController extends Controller
 
         $proyecto= new Proyecto();
         /* $cliente->cedula=$request->input('cedula');  */
-        $proyecto->Nombre=$request->input('nombre_proyecto');
+        $proyecto->Nombre=$request->input('nombre');
         $proyecto->Descripcion=$request->input('descripcion');   
         $proyecto->Id_Cliente=$request->input('id_cliente');   
         $proyecto->Cantidad_De_Encuestas=$request->input('cantidad_de_encuestas');   
@@ -79,7 +79,7 @@ class ProyectoController extends Controller
     public function show($id)
     {
         //
-        $proyecto=Proyecto::find($id);
+        $proyectos=Proyecto::find($id);
         return view('Proyecto.index',compact('proyectos'));
     
     }
