@@ -43,6 +43,7 @@ class ProyectoController extends Controller
     public function store(ProyectoFormRequest $request)
     {
 
+<<<<<<< HEAD
         $proyecto= new Proyecto();
         /* $cliente->cedula=$request->input('cedula');  */
         $proyecto->Nombre=$request->input('nombre');
@@ -51,14 +52,31 @@ class ProyectoController extends Controller
         $proyecto->Cantidad_De_Encuestas=$request->input('cantidad_de_encuestas');   
         $proyecto->Id_Tipo_De_Poblacion=$request->input('id_tipo_poblacion'); 
         $proyecto->save();
+=======
+       /*  $proyecto= new Proyecto(); */
+       /*  $cliente->cedula=$request->input('cedula'); */
+      /*   $proyecto->Nombre=$request->input('nombre_proyecto');
+        $proyecto->Descripcion=$request->input('descripcion');   
+        $proyecto->Id_Cliente=$request->input('id_cliente');   
+        $proyecto->Cantidad_De_Encuestas=$request->input('cantidad_de_encuestas');   
+        $proyecto->Id_Tipo_De_Poblacion=$request->input('id_tipo_poblacion'); */
+        
+       /*  $proyecto->save(); */
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
 
      /*  echo $request ->input('cedula'). $request->input('nombre').$request->input('descripcion').$request->input('telefono'). $request->input('celular').$request->input('direccion').$request->input('correo');
  */
       /*   var_dump($request); */
 
+<<<<<<< HEAD
         return redirect()->route('proyectoslistado')->with('success','Registro creado satisfactoriamente');
    
 /*    return view("Proyecto.index"); */
+=======
+       /*  return redirect()->route('proyectosslistado')->with('success','Registro creado satisfactoriamente'); */
+   
+   return view("Proyecto.index");
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
     }      
 
 
@@ -79,8 +97,13 @@ class ProyectoController extends Controller
     public function show($id)
     {
         //
+<<<<<<< HEAD
         $proyectos=Proyecto::find($id);
         return view('Proyecto.index',compact('proyectos'));
+=======
+        $proyecto=Proyecto::find($id);
+        return view('Proyecto.index',compact('proyecto'));
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
     
     }
 

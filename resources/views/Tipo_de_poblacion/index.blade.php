@@ -33,7 +33,11 @@
                         @if($tipo_de_poblacions->count())
                         @foreach($tipo_de_poblacions as $tipo_de_poblacion)
                         <tr>
+<<<<<<< HEAD
                             
+=======
+                            <!--  <td>{{$tipo_de_poblacion->id_tipo_de_poblacion}}</td> -->
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
                             <td>{{$tipo_de_poblacion->Nombre_De_Poblacion}}</td>
                             <td>{{$tipo_de_poblacion->Edad_Minima}}</td>
                             <td>{{$tipo_de_poblacion->Edad_Maxima}}</td>

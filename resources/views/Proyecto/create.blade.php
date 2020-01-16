@@ -29,7 +29,11 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-container">
+<<<<<<< HEAD
                         <form class="needs-validation" novalidate method="POST" action="{{route('proyectosstore')}}">
+=======
+                        <form   method="POST" action="{{route('proyectosstore')}}">
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
                         
                             @csrf
                            
@@ -40,7 +44,11 @@
                                             placeholder="Nombre" required placeholder="Nombre"
                                             value="{{old('nombre')}}">
                                         <div class="invalid-feedback">
+<<<<<<< HEAD
                                             Debe ingresar el nombre completo del cliente o el nombre de la empresa
+=======
+                                            Debe ingresar el nombre completo del ciente o el nombre de la empresa
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
                                         </div>
                                         <!--  {!! $errors->first('nombre','<span style=color:blue;">:message</span>')!!} -->
 
@@ -91,6 +99,7 @@
                                     </div>
                                 </div>
                                 
+<<<<<<< HEAD
                             </div>
                             <br>
 
@@ -106,6 +115,19 @@
                                     <input type="submit" value="Guardar" class="mb-2 mr-2 btn-transition btn btn-outline-primary btn-block"">
                                     <a href="{{ route('Proyecto.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-info btn-block">Atrás</a>
                                 </div>
+=======
+                            </div>
+                            <br>
+
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <input type="submit" value="Guardar" class="mb-2 mr-2 btn-transition btn btn-outline-primary btn-block"">
+                                    <a href="{{ route('Proyecto.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-info btn-block">Atrás</a>
+                                </div>
+
+                            </div>
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
                            
                         </form>
                     </div>
@@ -119,7 +141,11 @@
 </section>
 @endsection
 
+<<<<<<< HEAD
  <script>
+=======
+{{-- <script>
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict';
@@ -139,6 +165,10 @@
         }, false);
     })();
 
+<<<<<<< HEAD
 </script>
+=======
+</script> --}}
+>>>>>>> 184a9b6ab64c4425a7ee6e8300dc88839e1faf0b
 </div>
 </div>
